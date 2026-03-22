@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SimCoin — Discord Economy Bot | Simora City</title>
+<meta name="description" content="SimCoin is a Discord economy bot set in Simora City. Earn SC, build businesses, rob rivals, join factions, and rise from broke to city legend. Free."/>
+<meta name="keywords" content="SimCoin Discord bot,Discord economy bot,Discord city bot,Discord RPG bot,Discord money bot,Simora City,best Discord economy bot 2026,Discord faction bot,Discord crime bot"/>
+<meta name="robots" content="index,follow,max-image-preview:large"/>
+<link rel="canonical" href="https://simcoin.gg/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://simcoin.gg/"/>
+<meta property="og:title" content="SimCoin — Discord Economy Bot | Simora City"/>
+<meta property="og:description" content="Build your empire in Simora City. Work jobs, start businesses, rob rivals, join factions, and dominate the economy."/>
+<meta property="og:image" content="https://simcoin.gg/assets/raw.png"/>
+<meta property="og:site_name" content="SimCoin"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SimCoin — Discord Economy Bot | Simora City"/>
+<meta name="twitter:description" content="Build your empire in Simora City. The most immersive Discord economy bot."/>
+<meta name="twitter:image" content="https://simcoin.gg/assets/raw.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SimCoin","applicationCategory":"GameApplication","operatingSystem":"Discord","description":"SimCoin is a Discord economy bot set in Simora City.","url":"https://simcoin.gg","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RNZ4QG058"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6RNZ4QG058',{'anonymize_ip':true});function trackInvite(l){gtag('event','invite_click',{'event_category':'CTA','event_label':l});}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" href="assets/sc_coin.png" type="image/png"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#F0B429;--gold-glow:rgba(240,180,41,0.12);--gold-border:rgba(240,180,41,0.25);
+  --blue:#3B82F6;--cyan:#22D3EE;--green:#4ADE80;--red:#F87171;--orange:#FB923C;--purple:#A78BFA;
+  --bg:#080B12;--bg2:#0D1220;--bg3:#111827;--surface:#161F30;--surface2:#1E2A40;
+  --border:rgba(255,255,255,0.07);--text:#F1F5F9;--text-muted:#64748B;--text-dim:#94A3B8;
+  --nav-h:56px;--sidebar-w:268px;
+  --ff-display:'Bebas Neue',sans-serif;--ff-body:'DM Sans',sans-serif;--ff-mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:15px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5}
+
+/* ── PAGE SYSTEM ─────────────────────────────── */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* ── SHARED NAV ──────────────────────────────── */
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:500;display:flex;align-items:center;padding:0 32px;gap:16px;background:rgba(8,11,18,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--ff-display);font-size:22px;letter-spacing:.08em;color:var(--gold);flex-shrink:0}
+.nav-logo .w{color:var(--text)}
+.nav-logo img{width:24px;height:24px;border-radius:4px}
+.nav-sep{width:1px;height:18px;background:var(--border)}
+.nav-tag{font-size:12px;color:var(--text-muted);letter-spacing:.06em}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin-left:auto}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--text)}
+.nav-links .cta{background:var(--gold);color:#000!important;padding:8px 18px;border-radius:6px;font-weight:700!important;transition:all .2s!important}
+.nav-links .cta:hover{background:#ffd060!important;box-shadow:0 4px 20px rgba(240,180,41,.35)}
+.nav-hamburger{display:none;background:none;border:none;color:var(--text-dim);cursor:pointer;padding:4px;margin-left:auto}
+
+/* ── CITY BG ─────────────────────────────────── */
+.city-bg{position:fixed;bottom:0;left:0;right:0;height:45vh;pointer-events:none;z-index:0;overflow:hidden}
+.city-bg svg{width:100%;height:100%;opacity:.1}
+
+/* ════════════════════════════════════════════════
+   LANDING PAGE
+   ════════════════════════════════════════════════ */
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;z-index:1}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(240,180,41,.07) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,180,41,.08);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:28px;animation:fdown .6s ease both}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-family:var(--ff-display);font-size:clamp(60px,10vw,136px);line-height:.95;letter-spacing:.04em;color:var(--text);margin-bottom:6px;animation:fdown .6s .1s ease both}
+.hero h1 .accent{color:var(--gold);display:block}
+.hero-sub{font-family:var(--ff-display);font-size:clamp(18px,3vw,28px);letter-spacing:.2em;color:var(--text-muted);margin-bottom:24px;animation:fdown .6s .2s ease both}
+.hero p.desc{max-width:540px;font-size:17px;color:var(--text-dim);line-height:1.75;margin-bottom:44px;font-weight:300;animation:fdown .6s .3s ease both}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fdown .6s .4s ease both}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#000;font-family:var(--ff-body);font-weight:700;font-size:15px;padding:15px 32px;border-radius:8px;text-decoration:none;transition:all .25s;position:relative;overflow:hidden}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 50%);opacity:0;transition:opacity .25s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,180,41,.4)}
+.btn-gold:hover::after{opacity:1}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--text-dim);font-size:15px;font-weight:500;padding:15px 28px;border-radius:8px;text-decoration:none;border:1px solid var(--border);transition:all .25s;cursor:pointer}
+.btn-ghost:hover{border-color:rgba(255,255,255,.2);color:var(--text);background:rgba(255,255,255,.03)}
+/* stats */
+.hero-stats{margin-top:60px;display:flex;gap:44px;justify-content:center;flex-wrap:wrap;animation:fup .6s .5s ease both}
+.stat{text-align:center}
+.stat-num{font-family:var(--ff-display);font-size:38px;letter-spacing:.04em;color:var(--gold);line-height:1}
+.stat-label{font-size:11px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.stat-div{width:1px;height:44px;background:var(--border);align-self:center}
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase;animation:fup 1s 1s ease both}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sline 2s ease-in-out infinite}
+@keyframes sline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* marquee */
+.marquee-wrap{position:relative;z-index:1;padding:0 0 72px;overflow:hidden}
+.marquee-label{text-align:center;font-family:var(--ff-display);font-size:12px;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin-bottom:28px}
+.marquee-track{display:flex;gap:14px;animation:marquee 28s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.chip{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);padding:10px 18px;border-radius:100px;white-space:nowrap;font-size:13.5px;font-weight:500;color:var(--text-dim);transition:all .2s;cursor:default}
+.chip:hover{border-color:var(--gold-border);color:var(--text)}
+.chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+/* landing sections */
+.lsec{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:72px 44px}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sec-title{font-family:var(--ff-display);font-size:clamp(34px,5vw,60px);letter-spacing:.04em;line-height:1;color:var(--text);margin-bottom:18px}
+.sec-desc{font-size:16px;color:var(--text-dim);max-width:480px;line-height:1.75;font-weight:300}
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;border:2px solid var(--border);border-radius:14px;overflow:hidden}
+.feat-card{background:var(--bg2);padding:36px 28px;position:relative;overflow:hidden;transition:background .3s}
+.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+.feat-card:hover{background:var(--bg3)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{font-size:34px;margin-bottom:18px;display:block}
+.feat-card h3{font-family:var(--ff-display);font-size:22px;letter-spacing:.04em;color:var(--text);margin-bottom:10px}
+.feat-card p{font-size:14px;color:var(--text-muted);line-height:1.65;font-weight:300}
+.feat-tag{display:inline-block;margin-top:14px;font-size:11px;font-weight:600;font-family:var(--ff-mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:4px}
+/* progression */
+.prog-wrap{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 0}
+.prog-inner{max-width:1160px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.stages{display:flex;flex-direction:column;margin-top:40px}
+.stage{display:flex;gap:18px;padding-bottom:28px}
+.stage:last-child{padding-bottom:0}
+.stage-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.stage-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:var(--ff-mono);border:1px solid var(--border);background:var(--surface);color:var(--text-muted);transition:all .3s}
+.stage:hover .stage-dot{border-color:var(--gold);color:var(--gold);background:rgba(240,180,41,.1)}
+.stage-conn{width:1px;flex:1;background:var(--border);margin:4px 0}
+.stage-content{padding-top:5px}
+.stage-content h4{font-family:var(--ff-display);font-size:19px;letter-spacing:.04em;color:var(--text);margin-bottom:3px}
+.stage-content p{font-size:13.5px;color:var(--text-muted);line-height:1.5}
+/* terminal */
+.terminal{background:#0a0f1a;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.t-bar{background:var(--surface);padding:11px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-bar span{font-family:var(--ff-mono);font-size:11px;color:var(--text-muted);margin-left:7px}
+.t-body{padding:22px;font-family:var(--ff-mono);font-size:12.5px;line-height:2}
+.tp{color:var(--gold)}.tc{color:var(--text)}.to{color:var(--text-muted);padding-left:14px}.ts{color:#4ade80}.tsc{color:var(--gold)}.trep{color:var(--cyan)}
+.cursor{display:inline-block;width:7px;height:13px;background:var(--gold);animation:blink 1s infinite;vertical-align:middle;margin-left:2px}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+/* districts grid */
+.dist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+.dist-card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:26px;transition:all .3s;position:relative;overflow:hidden}
+.dist-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
+.dist-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.11)}
+.dist-card:hover::after{opacity:1}
+.d1::after{background:linear-gradient(90deg,#6b7280,#9ca3af)}
+.d2::after{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.d3::after{background:linear-gradient(90deg,#f59e0b,#fcd34d)}
+.d4::after{background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+.d5::after{background:linear-gradient(90deg,#16a34a,#4ade80)}
+.d6::after{background:linear-gradient(90deg,#dc2626,#f87171)}
+.dist-card .em{font-size:30px;margin-bottom:14px;display:block}
+.dist-card h3{font-family:var(--ff-display);font-size:20px;letter-spacing:.04em;color:var(--text);margin-bottom:4px}
+.dist-req{font-size:10px;font-family:var(--ff-mono);color:var(--text-muted);margin-bottom:10px;letter-spacing:.05em}
+.dist-card p{font-size:13px;color:var(--text-muted);line-height:1.6}
+/* commands section */
+.cmd-overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:44px}
+.cmd-overview-card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:20px 22px;cursor:pointer;transition:all .2s}
+.cmd-overview-card:hover{border-color:rgba(255,255,255,.14);background:var(--bg3);transform:translateY(-2px)}
+.cmd-overview-card .icon{font-size:22px;margin-bottom:10px}
+.cmd-overview-card h3{font-family:var(--ff-display);font-size:18px;letter-spacing:.04em;color:var(--text);margin-bottom:4px}
+.cmd-overview-card p{font-size:12px;color:var(--text-muted)}
+/* CTA section */
+.cta-section{position:relative;z-index:1;text-align:center;padding:110px 24px}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(240,180,41,.09) 0%,transparent 70%);pointer-events:none}
+.cta-section h2{font-family:var(--ff-display);font-size:clamp(44px,7vw,90px);letter-spacing:.04em;line-height:.95;color:var(--text);margin-bottom:22px}
+.cta-section h2 span{color:var(--gold)}
+.cta-section p{font-size:17px;color:var(--text-dim);max-width:460px;margin:0 auto 44px;font-weight:300}
+/* footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logo{font-family:var(--ff-display);font-size:20px;letter-spacing:.08em;color:var(--gold);display:flex;align-items:center;gap:8px}
+.foot-logo img{width:22px;height:22px;border-radius:3px}
+footer p{font-size:12px;color:var(--text-muted)}
+.foot-links{display:flex;gap:20px}
+.foot-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--text)}
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fdown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════════════════════════════════════════════════
+   DOCS PAGE
+   ════════════════════════════════════════════════ */
+.docs-layout{display:flex;margin-top:var(--nav-h);min-height:calc(100vh - var(--nav-h))}
+/* sidebar */
+.docs-sidebar{width:var(--sidebar-w);flex-shrink:0;position:fixed;top:var(--nav-h);bottom:0;left:0;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0 40px;scrollbar-width:thin;scrollbar-color:var(--surface2) transparent;z-index:100;transition:transform .3s}
+.docs-sidebar::-webkit-scrollbar{width:3px}
+.docs-sidebar::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:2px}
+.sb-group{margin-bottom:6px}
+.sb-group-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);padding:12px 18px 5px;display:block}
+.sb-link{display:flex;align-items:center;gap:9px;padding:7px 18px;font-size:13px;color:var(--text-dim);text-decoration:none;border-left:2px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
+.sb-link:hover{color:var(--text);background:rgba(255,255,255,.025)}
+.sb-link.active{color:var(--gold);border-left-color:var(--gold);background:var(--gold-glow)}
+.sb-link .sb-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.sb-count{margin-left:auto;font-size:10px;font-family:var(--ff-mono);background:var(--surface);color:var(--text-muted);padding:2px 6px;border-radius:100px}
+/* docs main */
+.docs-main{margin-left:var(--sidebar-w);flex:1;max-width:840px;padding:44px 52px 80px}
+.doc-sec{display:none;animation:fup .22s ease}
+.doc-sec.active{display:block}
+.doc-header{margin-bottom:36px;padding-bottom:22px;border-bottom:1px solid var(--border)}
+.doc-crumb{font-size:11px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.doc-crumb span{color:var(--gold)}
+.doc-title{font-family:var(--ff-display);font-size:44px;letter-spacing:.04em;line-height:1;color:var(--text);margin-bottom:10px}
+.doc-subtitle{font-size:15px;color:var(--text-dim);font-weight:300;max-width:560px;line-height:1.7}
+/* info boxes */
+.ibox{display:flex;gap:11px;padding:13px 15px;border-radius:8px;margin:18px 0;font-size:13.5px;line-height:1.6}
+.ibox.tip{background:rgba(74,222,128,.07);border-left:3px solid var(--green);color:#86efac}
+.ibox.warn{background:rgba(251,146,60,.07);border-left:3px solid var(--orange);color:#fdba74}
+.ibox.note{background:rgba(59,130,246,.07);border-left:3px solid var(--blue);color:#93c5fd}
+.ibox.danger{background:rgba(248,113,113,.07);border-left:3px solid var(--red);color:#fca5a5}
+.ibox-icon{flex-shrink:0;font-size:15px}
+/* command cards */
+.cmd-list{display:flex;flex-direction:column;gap:13px;margin-top:28px}
+.cmd-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.cmd-card:hover{border-color:rgba(255,255,255,.11)}
+.cmd-head{display:flex;align-items:center;gap:11px;padding:14px 18px;cursor:pointer;user-select:none}
+.cmd-name{font-family:var(--ff-mono);font-size:13px;font-weight:500;color:var(--gold);background:rgba(240,180,41,.08);padding:3px 10px;border-radius:5px;border:1px solid var(--gold-border);white-space:nowrap}
+.cmd-sum{font-size:13.5px;color:var(--text-dim);flex:1;min-width:0}
+.cmd-badges{display:flex;gap:5px;align-items:center;flex-shrink:0}
+.badge{font-size:10px;font-weight:700;font-family:var(--ff-mono);letter-spacing:.06em;padding:2px 7px;border-radius:4px;text-transform:uppercase}
+.bdm{background:rgba(74,222,128,.12);color:#86efac}
+.bsrv{background:rgba(59,130,246,.12);color:#93c5fd}
+.badm{background:rgba(248,113,113,.12);color:#fca5a5}
+.cmd-arrow{color:var(--text-muted);font-size:11px;transition:transform .2s;flex-shrink:0}
+.cmd-card.open .cmd-arrow{transform:rotate(180deg)}
+.cmd-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border)}
+.cmd-card.open .cmd-body{display:block}
+.cmd-body h4{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:14px 0 8px}
+.cmd-steps{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cmd-steps li{font-size:13.5px;color:var(--text-dim);padding-left:16px;position:relative;line-height:1.6}
+.cmd-steps li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:1px}
+/* docs table */
+.dtable{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}
+.dtable th{background:var(--surface);color:var(--text-dim);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.dtable td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-dim);vertical-align:top;line-height:1.55}
+.dtable tr:last-child td{border-bottom:none}
+.dtable tr:hover td{background:rgba(255,255,255,.015)}
+.dtable td:first-child{font-family:var(--ff-mono);font-size:12px;color:var(--gold);white-space:nowrap}
+/* inline code */
+code{font-family:var(--ff-mono);font-size:12.5px;background:var(--surface);color:var(--cyan);padding:1px 6px;border-radius:4px;border:1px solid var(--border)}
+/* search */
+.search-wrap{flex:1;max-width:320px;position:relative}
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:7px 14px 7px 32px;color:var(--text);font-family:var(--ff-body);font-size:12.5px;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--gold-border)}
+.search-input::placeholder{color:var(--text-muted)}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+/* district ref cards */
+.dref-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;margin-bottom:11px}
+.dref-bar{width:4px;flex-shrink:0}
+.dref-content{padding:14px 18px;flex:1}
+.dref-content .dref-top{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.dref-content strong{color:var(--text);font-size:14px}
+.dref-req{font-size:10px;font-family:var(--ff-mono);color:var(--text-muted);background:var(--surface);padding:2px 7px;border-radius:4px;margin-left:auto}
+.dref-content p{font-size:13px;color:var(--text-muted)}
+/* quickstart steps */
+.qs-steps{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:22px;margin-top:28px}
+.qs-step{display:flex;align-items:center;gap:13px;margin-bottom:13px}
+.qs-step:last-child{margin-bottom:0}
+.qs-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .feat-grid{grid-template-columns:1fr}
+  .dist-grid{grid-template-columns:1fr 1fr}
+  .prog-inner{grid-template-columns:1fr;gap:40px}
+  .docs-sidebar{transform:translateX(-100%)}
+  .docs-sidebar.open{transform:translateX(0)}
+  .docs-main{margin-left:0;padding:28px 22px 60px}
+  .nav-links{display:none}
+  .nav-hamburger{display:block}
+  footer{flex-direction:column;align-items:center;text-align:center}
+  .lsec{padding:56px 24px}
+}
+@media(max-width:600px){
+  .dist-grid{grid-template-columns:1fr}
+  .stat-div{display:none}
+  .hero-stats{gap:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SHARED TOPNAV ════════════════════════ -->
+<nav class="topnav" id="topnav">
+  <a href="#" class="nav-logo" onclick="showPage('landing');return false">
+    <img src="assets/sc_coin.png" alt="SC" onerror="this.style.display='none'">
+    <span>SIM</span><span class="w">COIN</span>
+  </a>
+  <div class="nav-sep" id="nav-sep"></div>
+  <span class="nav-tag" id="nav-tag"></span>
+
+  <ul class="nav-links" id="nav-links-landing">
+    <li><a onclick="scrollToSection('features')">Features</a></li>
+    <li><a onclick="scrollToSection('districts-sec')">Districts</a></li>
+    <li><a onclick="scrollToSection('progression-sec')">Progression</a></li>
+    <li><a onclick="showPage('docs')">Docs</a></li>
+    <li><a class="cta" href="https://discord.com/oauth2/authorize?client_id=1394292753076322345&permissions=1719631824813175&integration_type=0&scope=bot" onclick="trackInvite('nav')">Add to Discord</a></li>
+  </ul>
+
+  <ul class="nav-links" id="nav-links-docs" style="display:none">
+    <div class="search-wrap">
+      <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-input" type="text" placeholder="Search commands... (press /)" oninput="searchDocs(this.value)"/>
+    </div>
+    <li><a onclick="showPage('landing')">← Back</a></li>
+    <li><a href="https://discord.gg/YzSPM8Bz52" target="_blank">Discord</a></li>
+    <li><a class="cta" href="https://discord.com/oauth2/authorize?client_id=1394292753076322345&permissions=1719631824813175&integration_type=0&scope=bot" onclick="trackInvite('docs_nav')">Add Bot</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<!-- ═══ CITY BG (shared) ══════════════════════ -->
+<div class="city-bg" aria-hidden="true">
+  <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="200" width="60" height="200" fill="currentColor"/><rect x="20" y="160" width="20" height="40" fill="currentColor"/><rect x="70" y="220" width="80" height="180" fill="currentColor"/><rect x="160" y="140" width="50" height="260" fill="currentColor"/><rect x="175" y="100" width="20" height="40" fill="currentColor"/><rect x="220" y="230" width="70" height="170" fill="currentColor"/><rect x="300" y="170" width="90" height="230" fill="currentColor"/><rect x="400" y="200" width="60" height="200" fill="currentColor"/><rect x="470" y="150" width="100" height="250" fill="currentColor"/><rect x="500" y="80" width="40" height="70" fill="currentColor"/><rect x="580" y="210" width="70" height="190" fill="currentColor"/><rect x="660" y="130" width="120" height="270" fill="currentColor"/><rect x="690" y="60" width="60" height="70" fill="currentColor"/><rect x="710" y="30" width="20" height="30" fill="currentColor"/><rect x="790" y="180" width="80" height="220" fill="currentColor"/><rect x="880" y="150" width="100" height="250" fill="currentColor"/><rect x="910" y="90" width="40" height="60" fill="currentColor"/><rect x="990" y="200" width="70" height="200" fill="currentColor"/><rect x="1070" y="160" width="90" height="240" fill="currentColor"/><rect x="1095" y="100" width="40" height="60" fill="currentColor"/><rect x="1170" y="180" width="60" height="220" fill="currentColor"/><rect x="1240" y="130" width="110" height="270" fill="currentColor"/><rect x="1270" y="70" width="50" height="60" fill="currentColor"/><rect x="1360" y="190" width="80" height="210" fill="currentColor"/>
+    <rect x="175" y="120" width="4" height="4" fill="#F0B429" opacity=".8"/><rect x="505" y="95" width="4" height="4" fill="#3B82F6" opacity=".8"/><rect x="695" y="75" width="4" height="4" fill="#F0B429" opacity=".9"/><rect x="715" y="45" width="3" height="3" fill="#22D3EE" opacity=".8"/><rect x="915" y="105" width="4" height="4" fill="#F0B429" opacity=".7"/><rect x="1275" y="85" width="4" height="4" fill="#F0B429" opacity=".9"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: LANDING
+     ══════════════════════════════════════════════ -->
+<div class="page active" id="page-landing">
+
+  <!-- HERO -->
+  <section class="hero" style="margin-top:var(--nav-h)">
+    <div class="hero-badge">🏙️ Now Live in Simora City</div>
+    <h1>SIMCOIN<span class="accent">ECONOMY BOT</span></h1>
+    <p class="hero-sub">SIMORA CITY · DISCORD</p>
+    <p class="desc">Start broke in the Slums. Build your empire district by district. Rob rivals, own businesses, run factions, and become a Simora City legend — all inside Discord.</p>
+    <div class="hero-ctas">
+      <a class="btn-gold" href="https://discord.com/oauth2/authorize?client_id=1394292753076322345&permissions=1719631824813175&integration_type=0&scope=bot" onclick="trackInvite('hero')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.054a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Add to Discord — Free
+      </a>
+      <a class="btn-ghost" onclick="showPage('docs')">📖 Read the Docs</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Districts</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Commands</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">13</div><div class="stat-label">Cogs</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">FREE</div><div class="stat-label">Always</div></div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <p class="marquee-label">Explore Simora City</p>
+    <div style="overflow:hidden">
+      <div class="marquee-track">
+        <div class="chip"><span class="chip-dot" style="background:#6b7280"></span>🏚️ The Slums</div>
+        <div class="chip"><span class="chip-dot" style="background:#3b82f6"></span>🏪 Downtown</div>
+        <div class="chip"><span class="chip-dot" style="background:#f59e0b"></span>🌆 Financial District</div>
+        <div class="chip"><span class="chip-dot" style="background:#7c3aed"></span>🌿 The Underground</div>
+        <div class="chip"><span class="chip-dot" style="background:#16a34a"></span>🏗️ Industrial Zone</div>
+        <div class="chip"><span class="chip-dot" style="background:#dc2626"></span>🎭 The Strip</div>
+        <div class="chip"><span class="chip-dot" style="background:#6b7280"></span>/work delivery</div>
+        <div class="chip"><span class="chip-dot" style="background:#f59e0b"></span>/invest SSX</div>
+        <div class="chip"><span class="chip-dot" style="background:#dc2626"></span>/rob @user</div>
+        <div class="chip"><span class="chip-dot" style="background:#7c3aed"></span>/heist start</div>
+        <div class="chip"><span class="chip-dot" style="background:#3b82f6"></span>/business open</div>
+        <div class="chip"><span class="chip-dot" style="background:#16a34a"></span>/faction create</div>
+        <div class="chip"><span class="chip-dot" style="background:#6b7280"></span>🏚️ The Slums</div>
+        <div class="chip"><span class="chip-dot" style="background:#3b82f6"></span>🏪 Downtown</div>
+        <div class="chip"><span class="chip-dot" style="background:#f59e0b"></span>🌆 Financial District</div>
+        <div class="chip"><span class="chip-dot" style="background:#7c3aed"></span>🌿 The Underground</div>
+        <div class="chip"><span class="chip-dot" style="background:#16a34a"></span>🏗️ Industrial Zone</div>
+        <div class="chip"><span class="chip-dot" style="background:#dc2626"></span>🎭 The Strip</div>
+        <div class="chip"><span class="chip-dot" style="background:#6b7280"></span>/work delivery</div>
+        <div class="chip"><span class="chip-dot" style="background:#f59e0b"></span>/invest SSX</div>
+        <div class="chip"><span class="chip-dot" style="background:#dc2626"></span>/rob @user</div>
+        <div class="chip"><span class="chip-dot" style="background:#7c3aed"></span>/heist start</div>
+        <div class="chip"><span class="chip-dot" style="background:#3b82f6"></span>/business open</div>
+        <div class="chip"><span class="chip-dot" style="background:#16a34a"></span>/faction create</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="lsec reveal" id="features">
+    <p class="sec-label">What you can do</p>
+    <h2 class="sec-title">THE FULL CITY<br>IS YOURS</h2>
+    <p class="sec-desc">Every mechanic designed to keep the economy moving. Money flows, power shifts, and no one stays on top forever.</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="feat-icon">💼</span>
+        <h3>Jobs & Work</h3>
+        <p>Apply for jobs, collect passive income every 6 hours, or grind active shifts for 3x pay. Random outcomes and rare jackpots keep every shift fresh.</p>
+        <span class="feat-tag" style="background:rgba(59,130,246,.1);color:#60a5fa">/work · /apply · /collect</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🏢</span>
+        <h3>Businesses</h3>
+        <p>30+ business types across 5 tiers. Open, restock, hire staff, upgrade and collect. Neglect them and income halves. Max 3 per player.</p>
+        <span class="feat-tag" style="background:rgba(240,180,41,.1);color:#fcd34d">/business open · upgrade</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔫</span>
+        <h3>Crime</h3>
+        <p>25+ crimes — street, violent, white collar, cyber and organized. District-locked. Get caught and go to jail. Hire a lawyer for 50% sentence reduction.</p>
+        <span class="feat-tag" style="background:rgba(248,113,113,.1);color:#f87171">/crime · /heist</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🎰</span>
+        <h3>Gambling</h3>
+        <p>12 games in The Strip — Blackjack, Slots, Roulette, Poker, Baccarat, Horse Racing and more. Daily limit of 20% your balance. House always has an edge.</p>
+        <span class="feat-tag" style="background:rgba(248,113,113,.1);color:#f87171">/gamble blackjack · slots</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📈</span>
+        <h3>Investments</h3>
+        <p>10 stocks on the Simora Stock Exchange. Prices drift hourly. Bull runs, bear crashes and admin-triggered market events shake things up.</p>
+        <span class="feat-tag" style="background:rgba(240,180,41,.1);color:#fcd34d">/invest · /portfolio</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⚔️</span>
+        <h3>Factions</h3>
+        <p>Form crews, claim districts, run turf wars and manage a faction treasury. Leaders control territory that gives bonuses to all members.</p>
+        <span class="feat-tag" style="background:rgba(167,139,250,.1);color:#a78bfa">/faction create · claim</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESSION -->
+  <section class="prog-wrap" id="progression-sec">
+    <div class="prog-inner">
+      <div class="reveal">
+        <p class="sec-label">Your journey</p>
+        <h2 class="sec-title">BROKE TO<br>LEGEND</h2>
+        <p class="sec-desc" style="margin-top:14px">Every player starts with nothing. The path to the top is long, deliberate, and full of setbacks — exactly how it should be.</p>
+        <div class="stages">
+          <div class="stage"><div class="stage-line"><div class="stage-dot">01</div><div class="stage-conn"></div></div><div class="stage-content"><h4>Street Rat</h4><p>Basic jobs, petty crime, scraping SC together in the Slums.</p></div></div>
+          <div class="stage"><div class="stage-line"><div class="stage-dot">02</div><div class="stage-conn"></div></div><div class="stage-content"><h4>Hustler</h4><p>Multiple job types, first investments, unlock Downtown.</p></div></div>
+          <div class="stage"><div class="stage-line"><div class="stage-dot">03</div><div class="stage-conn"></div></div><div class="stage-content"><h4>Entrepreneur</h4><p>Own businesses, trade on the market, enter the Financial District.</p></div></div>
+          <div class="stage"><div class="stage-line"><div class="stage-dot">04</div><div class="stage-conn"></div></div><div class="stage-content"><h4>Power Player</h4><p>Multiple businesses, property portfolio, eligible to found a faction.</p></div></div>
+          <div class="stage"><div class="stage-line"><div class="stage-dot">05</div></div><div class="stage-content"><h4>City Legend</h4><p>District control, faction leadership, prestige reset. Your name on the leaderboard forever.</p></div></div>
+        </div>
+      </div>
+      <div class="terminal reveal">
+        <div class="t-bar"><div class="t-dot" style="background:#ff5f56"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#27c93f"></div><span>simora-city · #economy</span></div>
+        <div class="t-body">
+          <div><span class="tp">you</span> <span class="tc">/work delivery</span></div>
+          <div class="to">🚗 Shift complete — Delivery Driver</div>
+          <div class="to"><em>Customer tipped generously. Nice.</em></div>
+          <div class="to">💰 Earned: <span class="tsc">+312 SC</span></div>
+          <div class="to">⭐ Rep: <span class="trep">+15</span> &nbsp;📊 GREAT</div>
+          <div style="margin-top:10px"><span class="tp">you</span> <span class="tc">/rob @kingpin</span></div>
+          <div class="to">✅ Smooth. In and out before they knew.</div>
+          <div class="to">💰 Stolen: <span class="tsc">+1,840 SC</span></div>
+          <div style="margin-top:10px"><span class="tp">you</span> <span class="tc">/business status</span></div>
+          <div class="to">🏪 Downtown Cafe — Tier 2</div>
+          <div class="to">Stock: <span class="ts">████████░░</span> 80%</div>
+          <div class="to">Pending: <span class="tsc">+4,200 SC</span></div>
+          <div style="margin-top:10px"><span class="tp">you</span> <span class="tc">/balance</span><span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRICTS -->
+  <section class="lsec reveal" id="districts-sec">
+    <p class="sec-label">6 unique areas</p>
+    <h2 class="sec-title">EXPLORE<br>SIMORA CITY</h2>
+    <p class="sec-desc">Each district has its own jobs, risks and rewards. Higher districts need reputation or wealth to unlock — you earn your way up.</p>
+    <div class="dist-grid">
+      <div class="dist-card d1 reveal"><span class="em">🏚️</span><h3>The Slums</h3><p class="dist-req">FREE ENTRY — STARTING AREA</p><p>Where everyone begins. Delivery runs, street vending, petty crime. Low risk, low reward — but everyone has a story here.</p></div>
+      <div class="dist-card d2 reveal"><span class="em">🏪</span><h3>Downtown</h3><p class="dist-req">SC 5,000 OR REP RANK 3</p><p>The commercial heart. Shops, restaurants, the player marketplace, your first business opportunities.</p></div>
+      <div class="dist-card d3 reveal"><span class="em">🌆</span><h3>Financial District</h3><p class="dist-req">SC 50,000 NET WORTH</p><p>Glass towers and investment firms. The stock exchange, corporate consulting, and serious money.</p></div>
+      <div class="dist-card d4 reveal"><span class="em">🌿</span><h3>The Underground</h3><p class="dist-req">REP RANK 5+</p><p>Black market, hacking contracts, smuggling runs. High risk, high reward. Respect-based entry only.</p></div>
+      <div class="dist-card d5 reveal"><span class="em">🏗️</span><h3>Industrial Zone</h3><p class="dist-req">SC 20,000</p><p>Factories, freight yards, warehouses. Resource grinding and armored truck heists for the ambitious.</p></div>
+      <div class="dist-card d6 reveal"><span class="em">🎭</span><h3>The Strip</h3><p class="dist-req">SC 10,000</p><p>Casinos, arenas, event venues. All 12 gambling games, fight betting, weekly tournaments. Where money moves fast.</p></div>
+    </div>
+  </section>
+
+  <!-- COMMANDS OVERVIEW -->
+  <section class="lsec reveal" id="commands-sec">
+    <p class="sec-label">100+ slash commands</p>
+    <h2 class="sec-title">EVERYTHING<br>YOU CAN DO</h2>
+    <p class="sec-desc">13 command categories covering every part of city life. Click any category to read the full docs.</p>
+    <div class="cmd-overview-grid">
+      <div class="cmd-overview-card" onclick="showDocsSection('profile')"><div class="icon">👤</div><h3>Profile</h3><p>/start · /profile · /leaderboard · /terms</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('economy')"><div class="icon">💰</div><h3>Economy</h3><p>/balance · /bank · /pay · /daily · /rich</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('travel')"><div class="icon">🗺️</div><h3>Travel & Map</h3><p>/travel · /map · /districts · /whereami</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('work')"><div class="icon">💼</div><h3>Work & Jobs</h3><p>/jobs · /apply · /work · /myjobs · /collect · /quit</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('crime')"><div class="icon">🔪</div><h3>Crime</h3><p>25+ crimes — street, cyber, white collar, heists</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('gambling')"><div class="icon">🎰</div><h3>Gambling</h3><p>12 games — Blackjack, Slots, Roulette, Poker & more</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('businesses')"><div class="icon">🏢</div><h3>Businesses</h3><p>/business open · status · restock · upgrade · sell</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('market')"><div class="icon">🛒</div><h3>Marketplace</h3><p>/market browse · list · search · buy · cancel</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('inventory')"><div class="icon">🎒</div><h3>Inventory</h3><p>/inventory · /shop · /buy · /equip · /use</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('investments')"><div class="icon">📈</div><h3>Investments</h3><p>/invest · /sell · /portfolio · /market</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('factions')"><div class="icon">⚔️</div><h3>Factions</h3><p>/faction create · invite · turf · claim · deposit</p></div>
+      <div class="cmd-overview-card" onclick="showDocsSection('events')"><div class="icon">🎉</div><h3>Events</h3><p>/challenges · /season · /event</p></div>
+    </div>
+    <div style="margin-top:32px;text-align:center">
+      <a class="btn-ghost" onclick="showPage('docs')">📖 Open full documentation →</a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section reveal">
+    <h2>YOUR STORY<br>STARTS IN THE <span>SLUMS</span></h2>
+    <p>Join Simora City today. Add SimCoin to your Discord server and start your rise — completely free, forever.</p>
+    <a class="btn-gold" style="font-size:17px;padding:18px 44px" href="https://discord.com/oauth2/authorize?client_id=1394292753076322345&permissions=1719631824813175&integration_type=0&scope=bot" onclick="trackInvite('bottom_cta')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.054a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      Add SimCoin to Discord — Free
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo"><img src="assets/sc_coin.png" alt="SC" onerror="this.style.display='none'">SIMCOIN</div>
+    <p>© 2026 SimCoin. Not affiliated with Discord Inc.</p>
+    <div class="foot-links">
+      <a href="https://discord.gg/YzSPM8Bz52" target="_blank">Discord</a>
+      <a onclick="showPage('docs');return false" href="#">Docs</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1394292753076322345&permissions=1719631824813175&integration_type=0&scope=bot" onclick="trackInvite('footer')">Add Bot</a>
+    </div>
+  </footer>
+
+</div><!-- /page-landing -->
+
+<!-- ══════════════════════════════════════════════
+     PAGE: DOCS
+     ══════════════════════════════════════════════ -->
+<div class="page" id="page-docs">
+  <div class="docs-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar" id="docs-sidebar">
+      <div class="sb-group">
+        <span class="sb-group-label">Getting Started</span>
+        <div class="sb-link active" onclick="showDocSec('overview')"><span class="sb-icon">🏙️</span> Overview</div>
+        <div class="sb-link" onclick="showDocSec('quickstart')"><span class="sb-icon">⚡</span> Quick Start</div>
+        <div class="sb-link" onclick="showDocSec('mechanics')"><span class="sb-icon">⚙️</span> Game Mechanics</div>
+      </div>
+      <div class="sb-group">
+        <span class="sb-group-label">Commands</span>
+        <div class="sb-link" onclick="showDocSec('profile')"><span class="sb-icon">👤</span> Profile <span class="sb-count">4</span></div>
+        <div class="sb-link" onclick="showDocSec('economy')"><span class="sb-icon">💰</span> Economy <span class="sb-count">5</span></div>
+        <div class="sb-link" onclick="showDocSec('travel')"><span class="sb-icon">🗺️</span> Travel & Map <span class="sb-count">4</span></div>
+        <div class="sb-link" onclick="showDocSec('work')"><span class="sb-icon">💼</span> Work & Jobs <span class="sb-count">6</span></div>
+        <div class="sb-link" onclick="showDocSec('crime')"><span class="sb-icon">🔪</span> Crime <span class="sb-count">25+</span></div>
+        <div class="sb-link" onclick="showDocSec('gambling')"><span class="sb-icon">🎰</span> Gambling <span class="sb-count">12</span></div>
+        <div class="sb-link" onclick="showDocSec('businesses')"><span class="sb-icon">🏢</span> Businesses <span class="sb-count">9</span></div>
+        <div class="sb-link" onclick="showDocSec('market')"><span class="sb-icon">🛒</span> Marketplace <span class="sb-count">6</span></div>
+        <div class="sb-link" onclick="showDocSec('inventory')"><span class="sb-icon">🎒</span> Inventory <span class="sb-count">5</span></div>
+        <div class="sb-link" onclick="showDocSec('investments')"><span class="sb-icon">📈</span> Investments <span class="sb-count">4</span></div>
+        <div class="sb-link" onclick="showDocSec('factions')"><span class="sb-icon">⚔️</span> Factions <span class="sb-count">10</span></div>
+        <div class="sb-link" onclick="showDocSec('events')"><span class="sb-icon">🎉</span> Events <span class="sb-count">3</span></div>
+        <div class="sb-link" onclick="showDocSec('admin')"><span class="sb-icon">🔧</span> Admin <span class="sb-count">18</span></div>
+      </div>
+      <div class="sb-group">
+        <span class="sb-group-label">Reference</span>
+        <div class="sb-link" onclick="showDocSec('districts-ref')"><span class="sb-icon">🏙️</span> Districts</div>
+        <div class="sb-link" onclick="showDocSec('progression-ref')"><span class="sb-icon">⭐</span> Progression</div>
+      </div>
+    </aside>
+
+    <!-- DOCS CONTENT -->
+    <main class="docs-main" id="docs-main">
+
+      <!-- OVERVIEW -->
+      <div class="doc-sec active" id="ds-overview">
+        <div class="doc-header"><p class="doc-crumb">Getting Started · <span>Overview</span></p><h1 class="doc-title">SIMCOIN DOCS</h1><p class="doc-subtitle">Complete command reference for SimCoin — the Discord economy bot set in Simora City. 100+ commands across 13 categories.</p></div>
+        <div class="ibox note"><span class="ibox-icon">🏙️</span><div>SimCoin is currently in <strong>Beta</strong>. Commands may change as we tune the economy. Join the <a href="https://discord.gg/YzSPM8Bz52" style="color:var(--blue)" target="_blank">Discord server</a> for updates.</div></div>
+        <h3 style="font-family:var(--ff-display);font-size:22px;letter-spacing:.04em;color:var(--text);margin:28px 0 14px">What is SimCoin?</h3>
+        <p style="color:var(--text-dim);line-height:1.75;font-size:14px">SimCoin is a Discord economy bot set in <strong style="color:var(--text)">Simora City</strong> — a sleek, ambition-driven city where everyone is chasing wealth, status and power. Start with nothing in The Slums and fight your way to the Financial District.</p>
+        <table class="dtable" style="margin-top:20px">
+          <thead><tr><th>Feature</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>/start</td><td>How you begin — creates your Simora City profile</td></tr>
+            <tr><td>Currency</td><td>SC — Simora Coin. Wallet (spendable, robbable) + Bank (safe)</td></tr>
+            <tr><td>Districts</td><td>6 areas to unlock — each with unique jobs, risks and rewards</td></tr>
+            <tr><td>Reputation</td><td>8 ranks earned through jobs and challenges — gates district access</td></tr>
+            <tr><td>Commands</td><td>100+ slash commands across 13 cogs</td></tr>
+            <tr><td>Works in</td><td>DMs (personal commands) + Servers (social commands)</td></tr>
+          </tbody>
+        </table>
+        <h3 style="font-family:var(--ff-display);font-size:22px;letter-spacing:.04em;color:var(--text);margin:28px 0 14px">Command Categories</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div onclick="showDocSec('profile')" class="cmd-overview-card"><div class="icon">👤</div><h3>Profile</h3><p>4 commands</p></div>
+          <div onclick="showDocSec('economy')" class="cmd-overview-card"><div class="icon">💰</div><h3>Economy</h3><p>5 commands</p></div>
+          <div onclick="showDocSec('travel')" class="cmd-overview-card"><div class="icon">🗺️</div><h3>Travel & Map</h3><p>4 commands</p></div>
+          <div onclick="showDocSec('work')" class="cmd-overview-card"><div class="icon">💼</div><h3>Work & Jobs</h3><p>6 commands</p></div>
+          <div onclick="showDocSec('crime')" class="cmd-overview-card"><div class="icon">🔪</div><h3>Crime</h3><p>25+ crimes</p></div>
+          <div onclick="showDocSec('gambling')" class="cmd-overview-card"><div class="icon">🎰</div><h3>Gambling</h3><p>12 games</p></div>
+          <div onclick="showDocSec('businesses')" class="cmd-overview-card"><div class="icon">🏢</div><h3>Businesses</h3><p>9 actions</p></div>
+          <div onclick="showDocSec('market')" class="cmd-overview-card"><div class="icon">🛒</div><h3>Marketplace</h3><p>6 actions</p></div>
+          <div onclick="showDocSec('inventory')" class="cmd-overview-card"><div class="icon">🎒</div><h3>Inventory</h3><p>5 commands</p></div>
+          <div onclick="showDocSec('investments')" class="cmd-overview-card"><div class="icon">📈</div><h3>Investments</h3><p>4 commands</p></div>
+          <div onclick="showDocSec('factions')" class="cmd-overview-card"><div class="icon">⚔️</div><h3>Factions</h3><p>10 actions</p></div>
+          <div onclick="showDocSec('events')" class="cmd-overview-card"><div class="icon">🎉</div><h3>Events</h3><p>3 commands</p></div>
+        </div>
+      </div>
+
+      <!-- QUICK START -->
+      <div class="doc-sec" id="ds-quickstart">
+        <div class="doc-header"><p class="doc-crumb">Getting Started · <span>Quick Start</span></p><h1 class="doc-title">QUICK START</h1><p class="doc-subtitle">From zero to your first SC in under 5 minutes.</p></div>
+        <div class="qs-steps">
+          <div class="qs-step"><div class="qs-num" style="background:var(--gold);color:#000">1</div><code>/start</code><span style="font-size:13.5px;color:var(--text-dim)">Create your profile and accept Terms of Service</span></div>
+          <div class="qs-step"><div class="qs-num" style="background:var(--surface2);color:var(--text-dim)">2</div><code>/daily</code><span style="font-size:13.5px;color:var(--text-dim)">Claim 200–800 SC free every 24 hours</span></div>
+          <div class="qs-step"><div class="qs-num" style="background:var(--surface2);color:var(--text-dim)">3</div><code>/jobs</code><span style="font-size:13.5px;color:var(--text-dim)">Browse available jobs in The Slums</span></div>
+          <div class="qs-step"><div class="qs-num" style="background:var(--surface2);color:var(--text-dim)">4</div><code>/apply [job]</code><span style="font-size:13.5px;color:var(--text-dim)">Apply for a job — luck-based hiring</span></div>
+          <div class="qs-step"><div class="qs-num" style="background:var(--surface2);color:var(--text-dim)">5</div><code>/work [job]</code><span style="font-size:13.5px;color:var(--text-dim)">Work an active shift — pays 3x passive rate</span></div>
+          <div class="qs-step"><div class="qs-num" style="background:var(--surface2);color:var(--text-dim)">6</div><code>/bank deposit</code><span style="font-size:13.5px;color:var(--text-dim)">Keep your SC safe — wallet can be robbed</span></div>
+        </div>
+        <div class="ibox tip" style="margin-top:20px"><span class="ibox-icon">💡</span><div>Use <code>/collect</code> regularly to pick up passive income from all your jobs at once — it stacks while you're offline.</div></div>
+        <div class="ibox warn"><span class="ibox-icon">⚠️</span><div>You must be in the correct district to work a job. Use <code>/travel</code> to move between districts first.</div></div>
+      </div>
+
+      <!-- MECHANICS -->
+      <div class="doc-sec" id="ds-mechanics">
+        <div class="doc-header"><p class="doc-crumb">Getting Started · <span>Game Mechanics</span></p><h1 class="doc-title">MECHANICS</h1><p class="doc-subtitle">How the core systems work.</p></div>
+        <table class="dtable">
+          <thead><tr><th>System</th><th>How it works</th></tr></thead>
+          <tbody>
+            <tr><td>Economy</td><td>Wallet (spendable, robbable) + Bank (safe, 0.5% deposit fee). Daily gambling limit: 20% of balance.</td></tr>
+            <tr><td>Reputation</td><td>8 ranks. Earned through jobs and challenges. Lost through failed crimes. Gates district access.</td></tr>
+            <tr><td>Jobs</td><td>Apply with luck-based hiring. Passive income every 6h. Active work pays 3x. Daily limits per job.</td></tr>
+            <tr><td>Crime</td><td>25+ crimes. District-locked. Success rate: crime type + gear bonus. Fail = fine + possible jail.</td></tr>
+            <tr><td>Jail</td><td>Jail time varies by crime. Hire a lawyer for 50% reduction. Cannot work or commit crimes while jailed.</td></tr>
+            <tr><td>Gambling</td><td>12 games in District 6 only. Daily limit: 20% of total balance. House edge on every game.</td></tr>
+            <tr><td>Businesses</td><td>30+ types across 5 tiers. Passive income. Restock every 48h or income halves. Max 3 per player.</td></tr>
+            <tr><td>Market</td><td>Player-to-player trading. 5% market fee (min 10 SC). Listings expire after 7 days.</td></tr>
+            <tr><td>Investments</td><td>10 stocks. Prices drift hourly. Admin can trigger bull/bear events. 15% tax on gains.</td></tr>
+            <tr><td>Factions</td><td>Opt-in at Rank 6+. Claim districts for bonuses. Weekly turf wars. Treasury funded by members.</td></tr>
+            <tr><td>Challenges</td><td>Daily/weekly/monthly goals. Rewards: SC + reputation. Resets on UTC schedule.</td></tr>
+            <tr><td>Seasons</td><td>Limited-time global events with bonuses and exclusive rewards.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="doc-sec" id="ds-profile">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Profile</span></p><h1 class="doc-title">PROFILE</h1><p class="doc-subtitle">Account creation, viewing stats, and leaderboards.</p></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/start</span><span class="cmd-sum">Create your profile and begin in Simora City</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Checks if you already have a profile</li><li>Sends Terms of Service to your DMs with Accept/Decline buttons</li><li>If accepted, creates your profile starting with 0 SC in The Slums</li><li>Shows a welcome message with your first goals</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/profile [user]</span><span class="cmd-sum">View your or another player's profile card</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows wallet + bank balance, district, rep rank and progress bar</li><li>Number of businesses, prestige level, faction membership</li><li>Jail status if currently jailed, admin mode indicator if enabled</li><li>Optional @user mention to view someone else's profile</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/leaderboard [type]</span><span class="cmd-sum">View city-wide leaderboards</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Options: wealth, reputation, businesses</li><li>Top 10 players with 🥇🥈🥉 medals for top 3</li><li>Wealth shows total SC, reputation shows rank title, businesses shows count</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/terms</span><span class="cmd-sum">View the SimCoin Terms of Service</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Displays full ToS in an embed for reference</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- ECONOMY -->
+      <div class="doc-sec" id="ds-economy">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Economy</span></p><h1 class="doc-title">ECONOMY</h1><p class="doc-subtitle">Manage your SC — balance, banking, transfers, and daily rewards.</p></div>
+        <div class="ibox note"><span class="ibox-icon">💡</span><div><strong>Wallet vs Bank:</strong> Wallet is spendable but robbable. Bank is safe but charges a 0.5% deposit fee. Always bank your savings.</div></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/balance</span><span class="cmd-sum">Check your wallet and bank balance</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows wallet (spendable, can be robbed) and bank (safe storage)</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/bank [action] [amount]</span><span class="cmd-sum">Deposit or withdraw SC from your bank</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>action: deposit or withdraw. Amount: number or "all"</li><li>Deposit moves SC from wallet to bank with a 0.5% fee</li><li>Withdraw moves SC from bank to wallet with no fee</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/pay [@user] [amount]</span><span class="cmd-sum">Send SC to another player's wallet</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Server only — target must have a SimCoin profile</li><li>Transfers from your wallet to target's wallet instantly</li><li>Cannot pay yourself</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/daily</span><span class="cmd-sum">Claim your free daily SC reward</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Gives 200–800 SC randomly to your wallet</li><li>24-hour cooldown between claims</li><li>Prestige level adds a bonus multiplier</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/rich</span><span class="cmd-sum">Quick access to the wealth leaderboard</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows top 10 richest players by total net worth</li><li>Shortcut for /leaderboard wealth</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- TRAVEL -->
+      <div class="doc-sec" id="ds-travel">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Travel & Map</span></p><h1 class="doc-title">TRAVEL & MAP</h1><p class="doc-subtitle">Navigate Simora City's 6 districts. Your location determines which jobs, crimes and shops are available.</p></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/travel [district]</span><span class="cmd-sum">Move to a different district</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Options: The Slums, Downtown, Financial District, The Underground, Industrial Zone, The Strip</li><li>Checks your reputation rank and wealth requirements before allowing entry</li><li>5-minute cooldown between travels</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/map</span><span class="cmd-sum">View the Simora City map as a generated image</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Generates a PNG showing all 6 districts as polygons</li><li>Highlights your current district in gold with a pin marker</li><li>Shows faction control badges on claimed districts</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/districts</span><span class="cmd-sum">List all districts and entry requirements</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all 6 districts with name, emoji and entry requirement</li><li>Indicates which districts you currently have access to</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/whereami</span><span class="cmd-sum">Check your current district quickly</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows your current location and its emoji</li><li>Lists nearby districts you can travel to</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- WORK -->
+      <div class="doc-sec" id="ds-work">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Work & Jobs</span></p><h1 class="doc-title">WORK & JOBS</h1><p class="doc-subtitle">Apply for jobs, work active shifts for big pay, or let passive income collect every 6 hours.</p></div>
+        <div class="ibox tip"><span class="ibox-icon">💡</span><div>Active work pays <strong>3x</strong> the passive rate. Passive income stacks while you're offline — use <code>/collect</code> when you return.</div></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/jobs</span><span class="cmd-sum">Browse all available jobs by district</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Dropdown to select any district</li><li>Jobs grouped by field (Tech, Retail, Medical, etc.)</li><li>Status: ✅ Eligible · ❌ Locked · ✅ Employed</li><li>Each job shows base pay, requirements and cooldown</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/apply [job_id]</span><span class="cmd-sum">Apply for a specific job</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Autocomplete suggests available jobs in your district</li><li>Checks district, reputation and prestige requirements</li><li>Hiring is luck-based — hire_chance determines probability</li><li>24-hour cooldown between applications</li><li>7-day cooldown if you quit the same job field</li><li>Maximum 3 active jobs at once</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/myjobs</span><span class="cmd-sum">View all your currently active jobs</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Lists all jobs you're employed in</li><li>Shows district, passive income per 6h and time until next payout</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/work [job_id]</span><span class="cmd-sum">Work an active shift at one of your jobs</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Must be in the correct district — use /travel first</li><li>Random outcome: bad / normal / great / jackpot affects pay</li><li>Active shift pays 3x the passive income rate</li><li>Earns reputation points</li><li>5–25 minute cooldown depending on job type</li><li>Daily limit per job — hitting limit reduces pay</li><li>Random events can trigger (found wallet, city inspector, etc.)</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/collect</span><span class="cmd-sum">Collect all pending passive income from your jobs</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Calculates 6-hour cycles passed since your last collection</li><li>Adds all accumulated passive income to your wallet</li><li>Shows a breakdown per job</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/quit [job_id]</span><span class="cmd-sum">Quit one of your active jobs</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Requires confirmation before quitting</li><li>7-day cooldown before reapplying to the same field</li><li>Different fields can be applied to immediately</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- CRIME -->
+      <div class="doc-sec" id="ds-crime">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Crime</span></p><h1 class="doc-title">CRIME</h1><p class="doc-subtitle">25+ crimes across 5 categories. District-locked, risky, and reputation-costing — even when you succeed.</p></div>
+        <div class="ibox danger"><span class="ibox-icon">🚔</span><div>Crime costs reputation whether you succeed or fail. Getting caught means <strong>jail time + fines</strong>. Use <code>/crime lawyer</code> for 50% sentence reduction.</div></div>
+        <table class="dtable">
+          <thead><tr><th>Category</th><th>Crimes</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Street</td><td>Pickpocket, Shoplifting, Purse Snatch, Car Theft</td><td>Low risk, low reward</td></tr>
+            <tr><td>Violent</td><td>Mugging, Robbery, Home Invasion, Armed Robbery</td><td>Higher reward, higher jail risk</td></tr>
+            <tr><td>White Collar</td><td>Fraud, Embezzlement, Insider Trading</td><td>Financial District only</td></tr>
+            <tr><td>Cyber</td><td>ATM Skimming, Bank Hack, Data Breach, Ransomware</td><td>Underground access required</td></tr>
+            <tr><td>Organized</td><td>Fence Goods, Money Laundering, Drug Running, Weapon Trafficking, Contract Killing</td><td>Underground + high rep</td></tr>
+            <tr><td>Heists</td><td>Bank Heist, Casino Heist, Museum Heist, Armored Truck</td><td>Group activity, huge payouts</td></tr>
+          </tbody>
+        </table>
+        <div class="cmd-list" style="margin-top:20px">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/crime [action] [target]</span><span class="cmd-sum">Commit a crime or check jail status</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>action: any of the 25+ crime types</li><li>target: optional @user for crimes targeting players</li><li>District-locked — some crimes only in specific areas</li><li>Success rate: crime type + equipped gear bonuses</li><li>Success: receive reward (fixed SC or % of target's wallet)</li><li>Failure: fine + possible jail sentence + rep loss</li></ul></div></div>
+        </div>
+        <div class="ibox note" style="margin-top:16px"><span class="ibox-icon">⚖️</span><div>Use <code>/crime jail_status</code> to check time remaining and bail cost. Use <code>/crime lawyer</code> for 50% sentence reduction (costs SC).</div></div>
+      </div>
+
+      <!-- GAMBLING -->
+      <div class="doc-sec" id="ds-gambling">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Gambling</span></p><h1 class="doc-title">GAMBLING</h1><p class="doc-subtitle">12 games exclusively in District 6 — The Strip. Daily limit: 20% of your total balance.</p></div>
+        <div class="ibox warn"><span class="ibox-icon">🎰</span><div>Must be in <strong>The Strip (District 6)</strong> to gamble. Requires SC 10,000 to unlock the district.</div></div>
+        <table class="dtable">
+          <thead><tr><th>Game</th><th>Description</th><th>House Edge</th></tr></thead>
+          <tbody>
+            <tr><td>Slots</td><td>3-reel slot machine</td><td>~8%</td></tr>
+            <tr><td>Blackjack</td><td>Interactive card game with Hit/Stand buttons</td><td>~2%</td></tr>
+            <tr><td>Roulette</td><td>Spin the wheel — bet on numbers, colors, ranges</td><td>~5.26%</td></tr>
+            <tr><td>Craps</td><td>Dice game with pass/don't pass bets</td><td>~1.4%</td></tr>
+            <tr><td>Poker</td><td>5-card draw vs the dealer</td><td>~5%</td></tr>
+            <tr><td>Coinflip</td><td>Simple 50/50</td><td>~5%</td></tr>
+            <tr><td>Dice</td><td>Roll over/under a target number</td><td>~2.78%</td></tr>
+            <tr><td>Horse Racing</td><td>Bet on simulated races with odds</td><td>~10%</td></tr>
+            <tr><td>Lottery</td><td>Pick numbers and match to win jackpot</td><td>~30%</td></tr>
+            <tr><td>Baccarat</td><td>Player vs Banker card comparison</td><td>~1.06%</td></tr>
+            <tr><td>Keno</td><td>Pick numbers, hope for matches</td><td>~25%</td></tr>
+            <tr><td>Wheel of Fortune</td><td>Spin for random multipliers</td><td>~12%</td></tr>
+          </tbody>
+        </table>
+        <div class="cmd-list" style="margin-top:20px">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/gamble [game] [bet]</span><span class="cmd-sum">Play a gambling game at The Strip</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>game: choose from the 12 games listed above</li><li>bet: SC amount to wager from your wallet</li><li>Daily limit: 20% of your total balance</li><li>Blackjack uses interactive Hit/Stand buttons — others resolve instantly</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- BUSINESSES -->
+      <div class="doc-sec" id="ds-businesses">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Businesses</span></p><h1 class="doc-title">BUSINESSES</h1><p class="doc-subtitle">Own up to 3 businesses across 30+ types and 5 tiers. Passive income engine — neglect them and they decay.</p></div>
+        <div class="ibox warn"><span class="ibox-icon">⚠️</span><div>Businesses need restocking every <strong>48 hours</strong> or income halves. Neglect too long and the penalty compounds.</div></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business list</span><span class="cmd-sum">View all your businesses</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all owned businesses with income, stock level and status</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business open [type]</span><span class="cmd-sum">Open a new business</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Requires a Business License item in your inventory</li><li>Must be in the target district</li><li>Costs the startup cost from your wallet</li><li>Max 3 businesses per player</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business status [id]</span><span class="cmd-sum">View detailed stats for one business</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows income rate, stock level as a progress bar, staff count</li><li>Days until neglect penalty, pending income since last collection</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business restock [id]</span><span class="cmd-sum">Restock a business to full stock level</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Costs 20% of the business's startup cost</li><li>Resets stock to 100% and resets the neglect timer</li><li>Must be done every 48h to avoid income penalty</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business upgrade [id]</span><span class="cmd-sum">Upgrade to the next tier</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Costs the difference between current and next tier startup cost</li><li>Business must be at full stock and not neglected</li><li>Higher tiers earn significantly more daily income</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business hire [id]</span><span class="cmd-sum">Hire NPC staff</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Each staff member adds 5% to daily income</li><li>Increases daily upkeep cost</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business fire [id]</span><span class="cmd-sum">Remove a staff member</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Reduces income by 5% per staff removed</li><li>Reduces daily upkeep cost</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business collect [id]</span><span class="cmd-sum">Collect pending income from a business</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Adds accumulated passive income to your wallet</li><li>Stock and neglect modifiers applied automatically</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/business sell [id]</span><span class="cmd-sum">Sell a business permanently</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Returns 50% of the business's current value to your wallet</li><li>Cannot be undone</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- MARKET -->
+      <div class="doc-sec" id="ds-market">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Marketplace</span></p><h1 class="doc-title">MARKETPLACE</h1><p class="doc-subtitle">Player-to-player item trading. 5% market fee on all sales. Listings expire after 7 days.</p></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market browse</span><span class="cmd-sum">Browse all active marketplace listings</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all non-expired listings with pagination</li><li>Displays item, quantity, price per unit and seller</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market list [item] [qty] [price]</span><span class="cmd-sum">List an item for sale</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Removes item from your inventory immediately</li><li>Listing expires after 7 days — item returned if unsold</li><li>5% market fee (min 10 SC) deducted from sale proceeds</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market search [term]</span><span class="cmd-sum">Search for a specific item</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Searches listings by item name</li><li>Returns matching active listings with prices</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market mylistings</span><span class="cmd-sum">View your active marketplace listings</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all your current listings with expiry dates</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market cancel [id]</span><span class="cmd-sum">Cancel one of your listings</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Returns the item to your inventory — no fee</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market buy [id]</span><span class="cmd-sum">Purchase an item from the marketplace</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Deducts price + 5% fee from your wallet</li><li>Adds item to your inventory, pays SC to seller instantly</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- INVENTORY -->
+      <div class="doc-sec" id="ds-inventory">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Inventory</span></p><h1 class="doc-title">INVENTORY</h1><p class="doc-subtitle">View, buy, equip and use items. Gear gives bonuses to jobs and crime.</p></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/inventory</span><span class="cmd-sum">View everything you own</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Items grouped: ⚙️ Gear · 🧪 Consumables · 🔑 Key Items · ✨ Cosmetics</li><li>Shows quantity, description and equipped status</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/shop</span><span class="cmd-sum">Browse items for sale in your current district</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows items available in your current district only</li><li>Different districts sell different items</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/buy [item] [quantity]</span><span class="cmd-sum">Purchase an item from the district shop</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Autocomplete suggests available items in your district</li><li>Checks wallet balance, respects max stack limits</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/equip [item]</span><span class="cmd-sum">Equip a gear item</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Dropdown with all gear items in your inventory</li><li>Equipped gear bonuses apply automatically to /work and /crime</li><li>One item per gear slot at a time</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/use [item]</span><span class="cmd-sum">Use a consumable item</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Consumes the item permanently</li><li>Applies the effect — e.g. Energy Drink halves next job cooldown</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- INVESTMENTS -->
+      <div class="doc-sec" id="ds-investments">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Investments</span></p><h1 class="doc-title">INVESTMENTS</h1><p class="doc-subtitle">Trade stocks on the Simora Stock Exchange. 10 companies, hourly price drift, admin-triggered market events.</p></div>
+        <div class="ibox note"><span class="ibox-icon">📈</span><div>Stock prices drift hourly. Admins can trigger <strong>Bull Runs</strong> and <strong>Bear Crashes</strong>. Watch the market before investing big.</div></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/invest [stock] [shares]</span><span class="cmd-sum">Buy shares in a listed company</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>10 companies across various sectors on the SSX</li><li>Costs current price × shares from your wallet</li><li>Prices change every hour — timing matters</li><li>30-minute cooldown between investment actions</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/sell [stock] [shares]</span><span class="cmd-sum">Sell shares you own</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Autocomplete shows stocks you own</li><li>Calculates profit or loss vs average buy price</li><li>15% tax on gains applied automatically</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/portfolio</span><span class="cmd-sum">View your full investment portfolio</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Lists all stocks held with share count and avg buy price</li><li>Shows current price, total value and profit/loss per stock</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/market</span><span class="cmd-sum">View current stock market prices</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all 10 listed companies with current price and daily change</li><li>Active market events displayed (bull run, bear crash)</li><li>Note: this is the stock market, not the player marketplace</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- FACTIONS -->
+      <div class="doc-sec" id="ds-factions">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Factions</span></p><h1 class="doc-title">FACTIONS</h1><p class="doc-subtitle">Late-game social layer. Form a crew, claim districts, run turf wars. Requires Rep Rank 6+.</p></div>
+        <div class="ibox warn"><span class="ibox-icon">⚔️</span><div>Founding a faction costs <strong>100,000 SC</strong> and requires <strong>Reputation Rank 6</strong>. Solo play is fully viable throughout the entire game.</div></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction create [name] [tag]</span><span class="cmd-sum">Found a new faction</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Costs 100,000 SC from your wallet</li><li>Requires Reputation Rank 6+</li><li>tag: short identifier e.g. [APEX]</li><li>You become the faction leader automatically</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction info [name]</span><span class="cmd-sum">View faction details</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows name, type, member count, treasury balance and rep</li><li>Lists controlled districts and current bonuses</li><li>Defaults to your own faction if no name given</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction members</span><span class="cmd-sum">List all faction members and roles</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows all members with Leader/Officer/Member roles</li><li>Displays weekly contribution per member</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction invite [@user]</span><span class="cmd-sum">Invite a player to your faction</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Leader or Officer only</li><li>Faction must be below the 20-member cap</li><li>Target must not already be in a faction</li><li>Target receives a DM notification</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction leave</span><span class="cmd-sum">Leave your current faction</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Removes you from the faction member list</li><li>Leaders must transfer leadership first</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction transfer [@user]</span><span class="cmd-sum">Transfer faction leadership</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Leader only — target must be a current member</li><li>You become a regular member after transferring</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction deposit [amount]</span><span class="cmd-sum">Contribute SC to the faction treasury</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Deducts from your wallet, adds to shared treasury</li><li>Tracked as your weekly contribution</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction turf</span><span class="cmd-sum">View the district control map</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows which faction controls each district</li><li>Active turf war status and bonuses earned</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction claim [district]</span><span class="cmd-sum">Claim a district for your faction</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Costs 10,000 SC from the faction treasury</li><li>Controlled districts give bonuses to all faction members</li><li>Districts can be contested in weekly turf wars</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/faction disband</span><span class="cmd-sum">Dissolve the faction permanently</span><div class="cmd-badges"><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Leader only — treasury split among all members</li><li>Cannot be undone</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="doc-sec" id="ds-events">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Events</span></p><h1 class="doc-title">EVENTS</h1><p class="doc-subtitle">Daily, weekly and monthly challenges. Seasonal events with global bonuses. Turf wars for factions.</p></div>
+        <div class="cmd-list">
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/challenges</span><span class="cmd-sum">View your challenges and progress</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Daily challenges — reset midnight UTC</li><li>Weekly challenges — reset every Monday</li><li>Monthly challenges — reset on the 1st</li><li>Shows progress bars and SC + rep rewards</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/season</span><span class="cmd-sum">View the current seasonal event</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows active season name, theme and time remaining</li><li>Global bonuses and season-exclusive shop items</li></ul></div></div>
+          <div class="cmd-card"><div class="cmd-head"><span class="cmd-name">/event</span><span class="cmd-sum">View current special events</span><div class="cmd-badges"><span class="badge bdm">DM</span><span class="badge bsrv">SERVER</span><span class="cmd-arrow">▼</span></div></div><div class="cmd-body"><h4>How it works</h4><ul class="cmd-steps"><li>Shows active events like turf wars</li><li>Turf war details: contested districts, end time, current standings</li></ul></div></div>
+        </div>
+      </div>
+
+      <!-- ADMIN -->
+      <div class="doc-sec" id="ds-admin">
+        <div class="doc-header"><p class="doc-crumb">Commands · <span>Admin</span></p><h1 class="doc-title">ADMIN</h1><p class="doc-subtitle">Server administrator commands. Requires Discord Administrator permission. Server only.</p></div>
+        <div class="ibox danger"><span class="ibox-icon">🔒</span><div>All admin commands require <strong>Discord Administrator</strong> permission. They only work inside a server.</div></div>
+        <table class="dtable">
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>/admin_mode [mode]</td><td>Toggle admin mode on/off/status</td></tr>
+            <tr><td>/admin_give [user] [amount]</td><td>Give SC directly to a player's wallet</td></tr>
+            <tr><td>/admin_take [user] [amount]</td><td>Remove SC from a player's wallet</td></tr>
+            <tr><td>/admin_set_rep [user] [rep]</td><td>Set a player's reputation to an exact value</td></tr>
+            <tr><td>/admin_set_wallet [user] [amount]</td><td>Set a player's wallet balance directly</td></tr>
+            <tr><td>/admin_set_bank [user] [amount]</td><td>Set a player's bank balance directly</td></tr>
+            <tr><td>/admin_reset [user]</td><td>Reset a player's balance to 0 and clear all cooldowns</td></tr>
+            <tr><td>/admin_ban [user] [reason]</td><td>Ban a player from using SimCoin</td></tr>
+            <tr><td>/admin_unban [user]</td><td>Remove a player's ban</td></tr>
+            <tr><td>/admin_clear_cooldowns [user]</td><td>Clear all active cooldowns for a player</td></tr>
+            <tr><td>/admin_release_jail [user]</td><td>Immediately release a player from jail</td></tr>
+            <tr><td>/admin_announce [title] [msg] [channel]</td><td>Send a formatted SimCoin announcement embed</td></tr>
+            <tr><td>/admin_reload [cog]</td><td>Reload a specific bot cog without restarting</td></tr>
+            <tr><td>/admin_stats</td><td>View bot statistics — uptime, players, SC in circulation</td></tr>
+            <tr><td>/admin_season [season]</td><td>Start or end a seasonal event</td></tr>
+            <tr><td>/admin_start_turf [district] [hours]</td><td>Trigger a turf war event for a specific district</td></tr>
+            <tr><td>/admin_reset_challenges [type]</td><td>Manually reset daily/weekly/monthly challenges</td></tr>
+            <tr><td>/admin_market [action]</td><td>Trigger stock market events (bull run, bear crash)</td></tr>
+          </tbody>
+        </table>
+        <h3 style="font-family:var(--ff-display);font-size:20px;letter-spacing:.04em;color:var(--text);margin:28px 0 12px">Test Commands</h3>
+        <table class="dtable">
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>/test</td><td>Run full system diagnostic — database, cogs, tasks</td></tr>
+            <tr><td>/test-player [user]</td><td>Test all player operations for a specific user</td></tr>
+            <tr><td>/test-crime [type] [attempts]</td><td>Simulate crime probabilities over multiple attempts</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DISTRICTS REF -->
+      <div class="doc-sec" id="ds-districts-ref">
+        <div class="doc-header"><p class="doc-crumb">Reference · <span>Districts</span></p><h1 class="doc-title">DISTRICTS</h1><p class="doc-subtitle">Your current district determines which jobs, crimes, shops and gambling are available to you.</p></div>
+        <div style="margin-top:8px">
+          <div class="dref-card"><div class="dref-bar" style="background:#6b7280"></div><div class="dref-content"><div class="dref-top"><span>🏚️</span><strong>The Slums</strong><span class="dref-req">FREE — Starting Area</span></div><p>Delivery, street vendor, petty crime. Where everyone begins. Low risk, low reward.</p></div></div>
+          <div class="dref-card"><div class="dref-bar" style="background:#3b82f6"></div><div class="dref-content"><div class="dref-top"><span>🏪</span><strong>Downtown</strong><span class="dref-req">SC 5,000 or Rep Rank 3</span></div><p>Barista, security, the player marketplace, your first business opportunities.</p></div></div>
+          <div class="dref-card"><div class="dref-bar" style="background:#f59e0b"></div><div class="dref-content"><div class="dref-top"><span>🌆</span><strong>Financial District</strong><span class="dref-req">SC 50,000 net worth</span></div><p>Broker, corporate consultant, SSX stock exchange, investment firms. Serious money.</p></div></div>
+          <div class="dref-card"><div class="dref-bar" style="background:#7c3aed"></div><div class="dref-content"><div class="dref-top"><span>🌿</span><strong>The Underground</strong><span class="dref-req">Rep Rank 5+</span></div><p>Black market, hacking contracts, smuggling runs. High risk, high reward. Respect-based entry.</p></div></div>
+          <div class="dref-card"><div class="dref-bar" style="background:#16a34a"></div><div class="dref-content"><div class="dref-top"><span>🏗️</span><strong>Industrial Zone</strong><span class="dref-req">SC 20,000</span></div><p>Freight handler, factory worker, warehouse manager. Resource grinding and armored truck heists.</p></div></div>
+          <div class="dref-card"><div class="dref-bar" style="background:#dc2626"></div><div class="dref-content"><div class="dref-top"><span>🎭</span><strong>The Strip</strong><span class="dref-req">SC 10,000</span></div><p>All 12 gambling games, weekly tournaments, fight betting. Where money changes hands fast.</p></div></div>
+        </div>
+      </div>
+
+      <!-- PROGRESSION REF -->
+      <div class="doc-sec" id="ds-progression-ref">
+        <div class="doc-header"><p class="doc-crumb">Reference · <span>Progression</span></p><h1 class="doc-title">PROGRESSION</h1><p class="doc-subtitle">Two parallel tracks — wealth (SC) and reputation (Rep). Both gate different parts of the city.</p></div>
+        <h3 style="font-family:var(--ff-display);font-size:20px;letter-spacing:.04em;color:var(--text);margin-bottom:14px">Reputation Ranks</h3>
+        <table class="dtable">
+          <thead><tr><th>Rank</th><th>Title</th><th>Rep Required</th><th>Unlocks</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Unknown</td><td>0</td><td>Basic jobs, The Slums</td></tr>
+            <tr><td>2</td><td>Familiar Face</td><td>500</td><td>Extra job options, NPC interactions</td></tr>
+            <tr><td>3</td><td>Recognized</td><td>1,500</td><td>Downtown entry, better job pay</td></tr>
+            <tr><td>4</td><td>Respected</td><td>4,000</td><td>Business hire discount, market seller</td></tr>
+            <tr><td>5</td><td>Influential</td><td>9,000</td><td>Underground access, crime bonuses</td></tr>
+            <tr><td>6</td><td>Notable</td><td>18,000</td><td>Faction founding, advanced heists</td></tr>
+            <tr><td>7</td><td>Notorious</td><td>35,000</td><td>District-wide passive bonuses</td></tr>
+            <tr><td>8</td><td>Legend</td><td>70,000</td><td>City-wide title, permanent leaderboard, prestige eligible</td></tr>
+          </tbody>
+        </table>
+        <h3 style="font-family:var(--ff-display);font-size:20px;letter-spacing:.04em;color:var(--text);margin:28px 0 14px">Player Journey</h3>
+        <table class="dtable">
+          <thead><tr><th>Stage</th><th>Title</th><th>Milestone</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Street Rat</td><td>Basic jobs, petty crime in The Slums</td></tr>
+            <tr><td>2</td><td>Hustler</td><td>Multiple jobs, first investments, unlock Downtown</td></tr>
+            <tr><td>3</td><td>Entrepreneur</td><td>Own a business, trade on the market, Financial District access</td></tr>
+            <tr><td>4</td><td>Power Player</td><td>Multiple businesses, eligible to found a faction</td></tr>
+            <tr><td>5</td><td>City Legend</td><td>District control, faction leadership, prestige reset available</td></tr>
+          </tbody>
+        </table>
+        <div class="ibox tip" style="margin-top:20px"><span class="ibox-icon">⭐</span><div><strong>Prestige Reset:</strong> Reach Rank 8 Legend AND earn 1,000,000+ SC total to unlock prestige. You restart wealth but keep a badge and a permanent earnings multiplier.</div></div>
+      </div>
+
+    </main>
+  </div>
+</div><!-- /page-docs -->
+
+<script>
+// ── PAGE ROUTER ──────────────────────────────────────────
+let currentPage = 'landing';
+let currentDocSec = 'overview';
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  currentPage = page;
+
+  const sep = document.getElementById('nav-sep');
+  const tag = document.getElementById('nav-tag');
+  const landingLinks = document.getElementById('nav-links-landing');
+  const docsLinks = document.getElementById('nav-links-docs');
+  const hamburger = document.getElementById('nav-hamburger');
+
+  if (page === 'docs') {
+    sep.style.display = 'block';
+    tag.textContent = 'Documentation';
+    landingLinks.style.display = 'none';
+    docsLinks.style.display = 'flex';
+    window.scrollTo(0, 0);
+    // Init scroll reveal for docs is not needed
+  } else {
+    sep.style.display = 'none';
+    tag.textContent = '';
+    landingLinks.style.display = 'flex';
+    docsLinks.style.display = 'none';
+    window.scrollTo(0, 0);
+    initReveal();
+  }
+
+  // Update URL hash for bookmarking
+  history.pushState({page}, '', page === 'landing' ? '/' : '#docs');
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+// ── DOCS SECTION ROUTER ──────────────────────────────────
+function showDocSec(id) {
+  // Hide all doc sections
+  document.querySelectorAll('.doc-sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+
+  const sec = document.getElementById('ds-' + id);
+  if (sec) {
+    sec.classList.add('active');
+    currentDocSec = id;
+    document.getElementById('docs-main').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  // Highlight sidebar
+  document.querySelectorAll('.sb-link').forEach(link => {
+    const oc = link.getAttribute('onclick') || '';
+    if (oc.includes("'" + id + "'")) link.classList.add('active');
+  });
+
+  // Close mobile sidebar
+  if (window.innerWidth < 960) {
+    document.getElementById('docs-sidebar').classList.remove('open');
+  }
+}
+
+// Called from landing page command cards to jump straight to a doc section
+function showDocsSection(id) {
+  showPage('docs');
+  setTimeout(() => showDocSec(id), 50);
+}
+
+// ── MOBILE MENU ──────────────────────────────────────────
+function toggleMobileMenu() {
+  if (currentPage === 'docs') {
+    document.getElementById('docs-sidebar').classList.toggle('open');
+  } else {
+    const links = document.getElementById('nav-links-landing');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    if (links.style.display === 'flex') {
+      links.style.flexDirection = 'column';
+      links.style.position = 'fixed';
+      links.style.top = '56px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(8,11,18,.98)';
+      links.style.padding = '16px 24px';
+      links.style.borderBottom = '1px solid rgba(255,255,255,.07)';
+      links.style.zIndex = '499';
+    }
+  }
+}
+
+// ── CMD CARD ACCORDION ───────────────────────────────────
+document.addEventListener('click', e => {
+  const head = e.target.closest('.cmd-head');
+  if (head) {
+    const card = head.parentElement;
+    card.classList.toggle('open');
+  }
+});
+
+// ── DOCS SEARCH ──────────────────────────────────────────
+function searchDocs(query) {
+  if (!query.trim()) return;
+  const q = query.toLowerCase();
+  const secs = ['overview','quickstart','mechanics','profile','economy','travel','work','crime','gambling','businesses','market','inventory','investments','factions','events','admin','districts-ref','progression-ref'];
+  for (const id of secs) {
+    const el = document.getElementById('ds-' + id);
+    if (el && el.textContent.toLowerCase().includes(q)) {
+      showDocSec(id);
+      return;
+    }
+  }
+}
+
+// Press / to focus search
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && currentPage === 'docs' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.querySelector('.search-input').focus();
+  }
+});
+
+// ── SCROLL REVEAL ────────────────────────────────────────
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('#page-landing .reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.07 + 's';
+    obs.observe(el);
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  initReveal();
+  // Handle #docs hash on load
+  if (location.hash === '#docs') showPage('docs');
+});
+
+// Hide nav sep on init
+document.getElementById('nav-sep').style.display = 'none';
+</script>
+</body>
+</html>
